@@ -3,10 +3,9 @@ package com.euro2024.teams.controller;
 import com.euro2024.teams.entity.Team;
 import com.euro2024.teams.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/team")
@@ -19,10 +18,14 @@ public class TeamController {
         this.teamService = teamService;
     }
 
+    @GetMapping
+    public List<Team> teams(){
+        return (List<Team>) teamService.find();
+    }
 
-    @GetMapping("/{id}")
-    public Team teamID(@PathVariable("id") long id){
-        return teamService.findID(id).orElseThrow();
+    @GetMapping("/champions")
+    public List<Team> champions(@RequestParam int champions){
+        return (List<Team>) teamService.findChampions(champions);
     }
 
     @GetMapping("/{name}")

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: teams
+  datasource:
+    url: jdbc:mysql://localhost:3306/teams
+    username: root
+    password: XDDAW(21)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
